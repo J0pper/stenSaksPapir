@@ -1,34 +1,44 @@
 import random
+import time
 
 muligeSvar = ["sten", "saks", "papir"]
 computerSvar = random.choice(muligeSvar)
-#print(computerSvar)
-brugerSvar = input('Sten saks papir?')
 
-#prints the computers and the users choice
-print('Du valgte', brugerSvar, "computeren valgte", computerSvar)
 
-#checks if you won or lost
-if computerSvar == brugerSvar:
-    print('BRUH')
+print("Er du klar på et spil STEN SAKS PAPIR!?!")
+while True:
+    brugerSvar = input('Skriv dit valg her:').lower()
 
-elif computerSvar == "sten":
-    if brugerSvar == "papir":
-        print('YOU WIN')
+    if not brugerSvar in muligeSvar:
+        print(f"{brugerSvar} er ikke en mulighed... try again mate")
 
     else:
-        print('YOU LOSE BOHOOO')
+        break
 
-elif computerSvar == "papir":
-    if brugerSvar == "saks":
-        print('YOU WON')
+print(3)
+time.sleep(1)
+print(2)
+time.sleep(1)
+print(1)
+time.sleep(1)
 
-    else:
-        print('YOU LOSE')
+print(f"Du valgte {brugerSvar} og computeren valgte {computerSvar}")
+brugerindex = muligeSvar.index(brugerSvar)
+compindex = muligeSvar.index(computerSvar)
 
-elif computerSvar == "saks":
-    if brugerSvar == "sten":
-        print('YOU WON')
+if brugerindex == compindex:
+    print("bruh... draw -_-")
 
-    else:
-        print('YOU LOSE')
+if brugerindex != 0:
+    if brugerindex < compindex:
+        print("WOW du vandt!")
+
+    elif brugerindex > compindex:
+        print("ØV, du tabte, prøv igen :/")
+
+elif brugerindex == 0:
+    if compindex == 1:
+        print("u win!!!")
+
+    elif compindex == 2:
+        print("u lose xDDDDD")
