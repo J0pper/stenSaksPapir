@@ -1,5 +1,6 @@
 import random
 import time
+
 def sten_saks_papir():
     #Opsætter liste med alle mulige svar i spillet sten, saks og papir.
     mulige_svar = ["sten", "saks", "papir"]
