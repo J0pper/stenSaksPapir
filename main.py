@@ -1,7 +1,11 @@
 import random
 import time
+import pygame
 
-def sten_saks_papir():
+pygame.init()
+
+running = True
+while running:
     #Opsætter liste med alle mulige svar i spillet sten, saks og papir.
     mulige_svar = ["sten", "saks", "papir"]
 
@@ -54,16 +58,18 @@ def sten_saks_papir():
 
     #Spørger brugeren om de vil spille videre eller afslutte spillet.
     while True:
-        spil_igen = input("Tryk enter for at spille igen eller skriv dø for at afslutte spillet")
-        if spil_igen == "":
-            sten_saks_papir()
+        afslut = ["", "dø"]
+        spil_igen = input("Tryk enter for at spille igen eller skriv dø for at afslutte spillet").lower()
 
-        elif spil_igen == "dø":
-            break
-
-        else:
+        if not spil_igen in afslut:
             print(f"{spil_igen} er ikke et gyldigt svar, prøv igen!")
 
-    print("hvor er du kedelig!")
+        else:
+            if spil_igen == "dø":
+                running = False
+                break
+            elif spil_igen == "":
+                break
 
-sten_saks_papir()
+print("hvor er du kedelig!")
+
