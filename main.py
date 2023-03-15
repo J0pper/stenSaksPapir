@@ -1,8 +1,70 @@
 import random
 import time
+
+
 import pygame
 
+from Circle import circleClass
+
 pygame.init()
+
+game_window_width = pygame.display.Info().current_w
+game_window_height = pygame.display.Info().current_h
+screen = pygame.display.set_mode([game_window_width, game_window_height])
+
+
+def layout():
+    screen.fill((217, 209, 198))
+
+    pygame.draw.rect(screen, (78, 78, 85), pygame.Rect(0, 200, game_window_width, 400))
+
+    pygame.draw.circle(screen, (0, 0, 0), (game_window_width / 3, game_window_height - 100), 50)
+    pygame.draw.circle(screen, (0, 0, 0), (game_window_width / 2, game_window_height - 100), 50)
+    pygame.draw.circle(screen, (0, 0, 0), (game_window_width * 2/3, game_window_height - 100), 50)
+
+    sten_billede = pygame.image.load('sten_gesture.png')
+    sten_billede = pygame.transform.scale(sten_billede, (75, 75))
+    screen.blit(sten_billede, (game_window_width / 3 - 75 / 2, (game_window_height - 100) - 75 / 2))
+
+    saks_billede = pygame.image.load('saks_gesture.png')
+    saks_billede = pygame.transform.scale(saks_billede, (75, 75))
+    screen.blit(saks_billede, (game_window_width / 2 - 75 / 2, (game_window_height - 100) - 75 / 2))
+
+    papir_billede = pygame.image.load('papir_gesture.png')
+    papir_billede = pygame.transform.scale(papir_billede, (75, 75))
+    screen.blit(papir_billede, (game_window_width * 2/3 - 75 / 2, (game_window_height - 100) - 75 / 2))
+
+
+    
+
+def whatchuClicking(xPos, yPos, width, height):
+    mouse = pygame.mouse.get_pos()
+    xMouse = mouse[0]
+    yMouse = mouse[1]
+
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if gameWindowWidth / 2 - 75 <= mouse[0] <= gameWindowWidth / 2 + 75 and gameWindowHeight / 2 - 75 <= mouse[1] <= gameWindowHeight / 2 + 75:
+                pygame.quit()
+
+
+
+running = True
+
+while running:
+    layout()
+
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            running = False
+
+
+    pygame.display.update()
+
+'''
 
 running = True
 while running:
@@ -73,3 +135,5 @@ while running:
 
 print("hvor er du kedelig!")
 
+
+'''
